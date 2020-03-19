@@ -28,6 +28,13 @@ class UserPanel extends Component {
     }
   };
 
+  handleSignout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => console.log("signed out!"));
+  };
+
   openModal = () => this.setState({ modal: true });
 
   closeModal = () => this.setState({ modal: false });
@@ -114,13 +121,6 @@ class UserPanel extends Component {
         });
       });
     }
-  };
-
-  handleSignout = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => console.log("signed out!"));
   };
 
   render() {
