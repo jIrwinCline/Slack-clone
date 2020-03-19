@@ -19,6 +19,19 @@ class Channels extends React.Component {
     channelDetails: "",
     channelsRef: firebase.database().ref("channels")
   };
+
+  componentDidMount() {
+    this.addListeners();
+  }
+
+  addListeners = () => {
+    let loadedChannels = [];
+    this.state.channelsRef.on("child_added", snap => {
+      loadedChannels.push(snap.val());
+      this.setState({ channels: loadedChannels });
+    });
+  };
+
   addChannel = () => {
     const { channelsRef, channelName, channelDetails, user } = this.state;
 
@@ -60,6 +73,24 @@ class Channels extends React.Component {
   openModal = () => this.setState({ modal: true });
 
   closeModal = () => this.setState({ modal: false });
+
+  displayChannels = channels =>
+    channels.length > 0 &&
+    channels.map(channel => (
+      <Menu.Item
+        key={channel.id}
+        onClick={() => this.changeChannel(channel)}
+        name={channel.name}
+        style={{ opacity: 0.7 }}
+        active={channel.id === this.state.activeChannel}
+      >
+        {/* {this.getNotificationCount(channel) && (
+          <Label color="red">{this.getNotificationCount(channel)}</Label>
+        )} */}
+        # {channel.name}
+      </Menu.Item>
+    ));
+
   render() {
     const { channels, modal } = this.state;
     return (
@@ -71,6 +102,7 @@ class Channels extends React.Component {
             </span>{" "}
             ({channels.length}) <Icon name="add" onClick={this.openModal} />
           </Menu.Item>
+          {this.displayChannels(channels)}
         </Menu.Menu>
 
         <Modal basic open={modal} onClose={this.closeModal}>
