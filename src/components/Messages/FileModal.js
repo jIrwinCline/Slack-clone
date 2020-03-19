@@ -1,24 +1,25 @@
-import React, { Component } from 'react';
-import mime from 'mime-types';
-import { Modal, Input, Button, Icon } from 'semantic-ui-react';
+import React, { Component } from "react";
+import mime from "mime-types";
+import { Modal, Input, Button, Icon } from "semantic-ui-react";
 
 class FileModal extends Component {
   state = {
     file: null,
-    authorized: ['image/jpg', 'image/png']
-  }
+    authorized: ["image/jpg", "image/png", "image/jpeg"]
+  };
 
   addFile = event => {
     const file = event.target.files[0];
-    if(file) {
-      this.setState({ file })
+    if (file) {
+      this.setState({ file });
     }
-  }
+  };
 
   sendFile = () => {
     const { file } = this.state;
     const { uploadFile, closeModal } = this.props;
-    if(file !== null) {
+    if (file !== null) {
+      console.log(mime.lookup(file.name));
       if (this.isAuthorized(file.name)) {
         const metadata = { contentType: mime.lookup(file.name) };
         uploadFile(file, metadata);
@@ -26,11 +27,12 @@ class FileModal extends Component {
         this.clearFile();
       }
     }
-  }
+  };
 
   clearFile = () => this.setState({ file: null });
 
-  isAuthorized = filename => this.state.authorized.includes(mime.lookup(filename));
+  isAuthorized = filename =>
+    this.state.authorized.includes(mime.lookup(filename));
 
   render() {
     const { modal, closeModal } = this.props;
@@ -48,24 +50,16 @@ class FileModal extends Component {
           />
         </Modal.Content>
         <Modal.Actions>
-          <Button
-            onClick={this.sendFile}
-            color="green"
-            inverted
-          >
-          <Icon name="checkmark" /> Send
+          <Button onClick={this.sendFile} color="green" inverted>
+            <Icon name="checkmark" /> Send
           </Button>
-          <Button
-            color="red"
-            inverted
-            onClick={closeModal}
-          >
-          <Icon name="remove" /> Cancel
+          <Button color="red" inverted onClick={closeModal}>
+            <Icon name="remove" /> Cancel
           </Button>
         </Modal.Actions>
       </Modal>
-    )
+    );
   }
 }
 
-export default FileModal
+export default FileModal;
