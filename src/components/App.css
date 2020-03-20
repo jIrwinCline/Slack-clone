@@ -2,9 +2,10 @@ html,
 body,
 .app {
   height: 100vh;
-  background: #eee;
+  background-color: #eee;
   padding: 1em;
 }
+
 .messages {
   height: 440px;
   overflow-y: auto;
@@ -18,7 +19,16 @@ body,
   right: 1em;
   z-index: 200;
 }
+
 .message__self {
   border-left: 2px solid orange;
   padding-left: 8px;
+}
+
+.message__image {
+  padding: 1em;
+}
+
+.progress__bar {
+  margin: 0.3em 0 0 0 !important;
 }
