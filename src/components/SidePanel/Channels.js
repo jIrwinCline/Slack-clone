@@ -100,6 +100,17 @@ class Channels extends React.Component {
       this.setState({ notifications: updatedNotifications });
     }
   };
+  getNotificationCount = channel => {
+    let count = 0;
+
+    this.state.notifications.forEach(notification => {
+      if (notification.id === channel.id) {
+        count = notification.count;
+      }
+    });
+
+    if (count > 0) return count;
+  };
   setFirstChannel = () => {
     const firstChannel = this.state.channels[0];
     if (this.state.firstLoad && this.state.channels.length > 0) {
@@ -173,9 +184,9 @@ class Channels extends React.Component {
         style={{ opacity: 0.7 }}
         active={channel.id === this.state.activeChannel}
       >
-        {/* {this.getNotificationCount(channel) && (
+        {this.getNotificationCount(channel) && (
           <Label color="red">{this.getNotificationCount(channel)}</Label>
-        )} */}
+        )}
         # {channel.name}
       </Menu.Item>
     ));
