@@ -2,13 +2,12 @@ import React from "react";
 import { Menu } from "semantic-ui-react";
 
 import UserPanel from "./UserPanel";
-// import Starred from "./Starred";
 import Channels from "./Channels";
-// import DirectMessages from "./DirectMessages";
+import DirectMessages from "./DirectMessages";
 
 class SidePanel extends React.Component {
   render() {
-    const { currentUser, primaryColor } = this.props;
+    const { currentUser } = this.props;
 
     return (
       <Menu
@@ -16,12 +15,13 @@ class SidePanel extends React.Component {
         inverted
         fixed="left"
         vertical
-        style={{ background: primaryColor, fontSize: "1.2rem" }}
+        style={{ background: "#4c3c4c", fontSize: "1.2rem" }}
       >
-        <UserPanel primaryColor={primaryColor} currentUser={currentUser} />
+        <UserPanel currentUser={currentUser} />
         {/* <Starred currentUser={currentUser} /> */}
+
         <Channels currentUser={currentUser} />
-        {/* <DirectMessages currentUser={currentUser} /> */}
+        <DirectMessages currentUser={currentUser} />
       </Menu>
     );
   }
