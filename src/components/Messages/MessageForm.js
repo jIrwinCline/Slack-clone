@@ -16,7 +16,8 @@ class MessageForm extends Component {
     modal: false,
     uploadState: "",
     uploadTask: null,
-    percentUploaded: 0
+    percentUploaded: 0,
+    typingRef: firebase.database().ref("typing")
   };
 
   openModal = () => this.setState({ modal: true });
@@ -25,6 +26,22 @@ class MessageForm extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleKeyDown = () => {
+    const { message, typingRef, channel, user } = this.state;
+
+    if (message) {
+      typingRef
+        .child(channel.id)
+        .child(user.uid)
+        .set(user.displayName);
+    } else {
+      typingRef
+        .child(channel.id)
+        .child(user.uid)
+        .remove();
+    }
   };
 
   createMessage = (fileUrl = null) => {
@@ -157,6 +174,7 @@ class MessageForm extends Component {
           fluid
           name="message"
           onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
           value={message}
           style={{ marginBottom: "0.7em" }}
           label={<Button icon={"add"} />}
