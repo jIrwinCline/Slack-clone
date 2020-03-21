@@ -14,8 +14,8 @@
 - [Features](#features)
 - [Technologies](#technologies)
 - [Build](#build)
-- [Bugs](#known)
-- [Contact](#support)
+- [Bugs](#bugs)
+- [Contact](#contact)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -47,7 +47,7 @@ A few of the things you can do with GitPoint:
 - Change the color scheme to your liking
 - Star your favorite channels!
 
-## Technologies Used
+## Technologies
 
 - JavaScript
 - React.js
@@ -57,7 +57,7 @@ A few of the things you can do with GitPoint:
 - Firebase
 - SemanticUI
 
-## Build Process
+## Build
 
 #### To build on your own machine
 
@@ -67,13 +67,13 @@ A few of the things you can do with GitPoint:
 - `npm run start` to run the project on localhost
 - Open your preffered browser and navigate to https://localhost:3000
 
-## Known Bugs
+## Bugs
 
 Images become unreadable as time passes. Likely a firebase file targetting issue in the code.
 
 typing notification isn't present on hosted site
 
-## Support and Contact Details
+## Contact
 
 If you'd like to inquire about any details, or have questions about the technology, feel free to contact me.
 
