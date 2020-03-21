@@ -12,10 +12,10 @@
 - [Introduction](#introduction)
 - [Hosting](#hosting)
 - [Features](#features)
-- [Technologies](#Technologies Used)
-- [Build](#Build Process)
-- [Bugs](#known bugs)
-- [Contact](#Support and Contact Details)
+- [Technologies](#technologies)
+- [Build](#build)
+- [Bugs](#known)
+- [Contact](#support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
