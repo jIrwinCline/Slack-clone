@@ -18,7 +18,7 @@ class UserPanel extends Component {
     modal: false,
     previewImage: "",
     croppedImage: "",
-    blob: "",
+    blob: null,
     uploadedCroppedImage: "",
     storageRef: firebase.storage().ref(),
     userRef: firebase.auth().currentUser,
