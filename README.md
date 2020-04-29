@@ -36,7 +36,7 @@ _Link to hosted site:_
 
 ## Features
 
-A few of the things you can do with GitPoint:
+A few of the things you can do with the app:
 
 - Register and log in to a user account
 - Send messages in dedicated channels
